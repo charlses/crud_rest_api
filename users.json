@@ -1,0 +1,82 @@
+[
+  {
+    "firstname": "John",
+    "lastname": "Doe",
+    "email": "john.doe@example.com",
+    "password": "cG4kZ8bL2q",
+    "posts": [],
+    "comments": []
+  },
+  {
+    "firstname": "Jane",
+    "lastname": "Smith",
+    "email": "jane.smith@example.com",
+    "password": "vL2jK1sN8o",
+    "posts": [],
+    "comments": []
+  },
+  {
+    "firstname": "Alice",
+    "lastname": "Johnson",
+    "email": "alice.johnson@example.com",
+    "password": "dP5yX3qW9m",
+    "posts": [],
+    "comments": []
+  },
+  {
+    "firstname": "Bob",
+    "lastname": "Brown",
+    "email": "bob.brown@example.com",
+    "password": "aJ7lR4pV6s",
+    "posts": [],
+    "comments": []
+  },
+  {
+    "firstname": "Charlie",
+    "lastname": "Davis",
+    "email": "charlie.davis@example.com",
+    "password": "kN9bU6tF1h",
+    "posts": [],
+    "comments": []
+  },
+  {
+    "firstname": "David",
+    "lastname": "Martinez",
+    "email": "david.martinez@example.com",
+    "password": "mQ3vY2eL7r",
+    "posts": [],
+    "comments": []
+  },
+  {
+    "firstname": "Eva",
+    "lastname": "Lopez",
+    "email": "eva.lopez@example.com",
+    "password": "pT1jK5wZ8x",
+    "posts": [],
+    "comments": []
+  },
+  {
+    "firstname": "Frank",
+    "lastname": "Gonzalez",
+    "email": "frank.gonzalez@example.com",
+    "password": "zW4cH9bL2r",
+    "posts": [],
+    "comments": []
+  },
+  {
+    "firstname": "Grace",
+    "lastname": "Wilson",
+    "email": "grace.wilson@example.com",
+    "password": "rX8mP2tQ5v",
+    "posts": [],
+    "comments": []
+  },
+  {
+    "firstname": "Henry",
+    "lastname": "Moore",
+    "email": "henry.moore@example.com",
+    "password": "yL3pK7zV6s",
+    "posts": [],
+    "comments": []
+  }
+]
