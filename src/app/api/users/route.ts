@@ -9,7 +9,11 @@ export async function GET(req: NextRequest) {
     return NextResponse.json(users, {
       status: 200,
       statusText: 'OK',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': '*'
+      },
       url: req.url
     })
   } catch (err: any) {
