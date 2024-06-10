@@ -1,18 +1,12 @@
 import { connect } from '@/server/db'
-import User from '@/schemas/userSchema'
+import Comment from '@/schemas/commentSchema'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(req: NextRequest) {
   await connect()
   try {
-    const users = await User.find()
-    if (!users) {
-      return NextResponse.json(
-        { message: 'No users found' },
-        { status: 404, statusText: 'No users found' }
-      )
-    }
-    return NextResponse.json(users, {
+    const comments = await Comment.find()
+    return NextResponse.json(comments, {
       status: 200,
       statusText: 'OK',
       url: req.url
@@ -31,15 +25,18 @@ export async function POST(req: NextRequest) {
     const data = await req.json()
     console.log(data)
 
-    if (!data.firstname || !data.lastname || !data.email || !data.password) {
+    if (!data.content || !data.author || !data.post) {
       return NextResponse.json(
-        { error: 'Validation error', message: 'All fields are required' },
+        {
+          error: 'Validation error',
+          message: 'Content, author, and post are required'
+        },
         { status: 400, statusText: 'Bad Request' }
       )
     }
 
-    const newUser = await User.create(data)
-    return NextResponse.json(newUser, {
+    const newComment = await Comment.create(data)
+    return NextResponse.json(newComment, {
       status: 201,
       statusText: 'Created',
       url: req.url
