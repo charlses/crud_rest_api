@@ -87,3 +87,4 @@ export async function DELETE(
       { status: 500, statusText: 'Internal server error' }
     )
   }
+}
