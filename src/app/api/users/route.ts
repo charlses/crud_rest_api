@@ -12,11 +12,21 @@ export async function GET(req: NextRequest) {
         { status: 404, statusText: 'No users found' }
       )
     }
-    return NextResponse.json(users, {
-      status: 200,
-      statusText: 'OK',
-      url: req.url
-    })
+    return NextResponse.json(
+      {
+        status: 200,
+        statusText: 'OK',
+        url: req.url,
+        message: 'API Request Completed Successfully',
+        method: 'GET',
+        result: users
+      },
+      {
+        status: 200,
+        statusText: 'OK',
+        url: req.url
+      }
+    )
   } catch (err: any) {
     return NextResponse.json(
       { error: err.message, message: 'Internal server error: 500' },
@@ -39,11 +49,21 @@ export async function POST(req: NextRequest) {
     }
 
     const newUser = await User.create(data)
-    return NextResponse.json(newUser, {
-      status: 201,
-      statusText: 'Created',
-      url: req.url
-    })
+    return NextResponse.json(
+      {
+        status: 200,
+        statusText: 'OK',
+        url: req.url,
+        message: 'API Request Completed Successfully',
+        method: 'POST',
+        result: newUser
+      },
+      {
+        status: 201,
+        statusText: 'Created',
+        url: req.url
+      }
+    )
   } catch (err: any) {
     return NextResponse.json(
       { error: err.message, message: 'Internal server error: 500' },

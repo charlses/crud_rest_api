@@ -18,11 +18,21 @@ export async function GET(
         { status: 404, statusText: 'User not found' }
       )
     }
-    return NextResponse.json(user, {
-      status: 200,
-      statusText: 'OK',
-      url: req.url
-    })
+    return NextResponse.json(
+      {
+        status: 200,
+        statusText: 'OK',
+        url: req.url,
+        message: 'API Request Completed Successfully',
+        method: 'GET',
+        result: user
+      },
+      {
+        status: 200,
+        statusText: 'OK',
+        url: req.url
+      }
+    )
   } catch (err: any) {
     return NextResponse.json(
       { error: err.message, message: 'Internal server error: 500' },
@@ -47,11 +57,21 @@ export async function PUT(
         { status: 404, statusText: 'User not found' }
       )
     }
-    return NextResponse.json(updatedUser, {
-      status: 200,
-      statusText: 'OK',
-      url: req.url
-    })
+    return NextResponse.json(
+      {
+        status: 200,
+        statusText: 'OK',
+        url: req.url,
+        message: 'API Request Completed Successfully',
+        method: 'PUT',
+        result: updatedUser
+      },
+      {
+        status: 200,
+        statusText: 'OK',
+        url: req.url
+      }
+    )
   } catch (err: any) {
     return NextResponse.json(
       { error: err.message, message: 'Internal server error: 500' },
@@ -80,7 +100,11 @@ export async function DELETE(
 
     return NextResponse.json(
       {
-        message: 'User and associated posts and comments deleted successfully'
+        status: 200,
+        statusText: 'OK',
+        url: req.url,
+        message: 'API Request Completed Successfully',
+        method: 'DELETE'
       },
       {
         status: 200,

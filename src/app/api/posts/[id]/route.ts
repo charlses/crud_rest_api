@@ -17,11 +17,21 @@ export async function GET(
         { status: 404, statusText: 'Post not found' }
       )
     }
-    return NextResponse.json(post, {
-      status: 200,
-      statusText: 'OK',
-      url: req.url
-    })
+    return NextResponse.json(
+      {
+        status: 200,
+        statusText: 'OK',
+        url: req.url,
+        message: 'API Request Completed Successfully',
+        method: 'GET',
+        result: post
+      },
+      {
+        status: 200,
+        statusText: 'OK',
+        url: req.url
+      }
+    )
   } catch (err: any) {
     return NextResponse.json(
       { error: err.message, message: 'Internal server error: 500' },
@@ -49,11 +59,21 @@ export async function PUT(
         { status: 404, statusText: 'Post not found' }
       )
     }
-    return NextResponse.json(updatedPost, {
-      status: 200,
-      statusText: 'OK',
-      url: req.url
-    })
+    return NextResponse.json(
+      {
+        status: 200,
+        statusText: 'OK',
+        url: req.url,
+        message: 'API Request Completed Successfully',
+        method: 'PUT',
+        result: updatedPost
+      },
+      {
+        status: 200,
+        statusText: 'OK',
+        url: req.url
+      }
+    )
   } catch (err: any) {
     return NextResponse.json(
       { error: err.message, message: 'Internal server error: 500' },
@@ -78,7 +98,13 @@ export async function DELETE(
     }
     await Comment.deleteMany({ post: id })
     return NextResponse.json(
-      { message: 'Post deleted successfully' },
+      {
+        status: 200,
+        statusText: 'OK',
+        url: req.url,
+        message: 'API Request Completed Successfully',
+        method: 'DELETE'
+      },
       {
         status: 200,
         statusText: 'OK',
