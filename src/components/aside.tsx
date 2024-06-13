@@ -1,3 +1,4 @@
+'use client'
 import {
   SquareTerminal,
   Bot,
@@ -5,9 +6,9 @@ import {
   Book,
   Settings2,
   LifeBuoy,
-  SquareUser,
-  Triangle
+  SquareUser
 } from 'lucide-react'
+
 import { Button } from '@/components/ui/button'
 import {
   Tooltip,
@@ -16,7 +17,12 @@ import {
   TooltipTrigger
 } from '@/components/ui/tooltip'
 
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+
 export function SidebarNavigation() {
+  const pathname = usePathname()
+
   return (
     <aside className='inset-y fixed left-0 z-20 flex h-full flex-col border-r'>
       <div className='border-b p-2'>
@@ -28,14 +34,16 @@ export function SidebarNavigation() {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button
-                variant='ghost'
-                size='icon'
-                className='rounded-lg bg-muted'
-                aria-label='Playground'
-              >
-                <SquareTerminal className='size-5' />
-              </Button>
+              <Link href='/'>
+                <Button
+                  variant='ghost'
+                  size='icon'
+                  className={`rounded-lg ${pathname === '/' ? 'bg-muted' : ''}`}
+                  aria-label='Playground'
+                >
+                  <SquareTerminal className='size-5' />
+                </Button>
+              </Link>
             </TooltipTrigger>
             <TooltipContent side='right' sideOffset={5}>
               Playground
@@ -45,14 +53,18 @@ export function SidebarNavigation() {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button
-                variant='ghost'
-                size='icon'
-                className='rounded-lg'
-                aria-label='Models'
-              >
-                <Bot className='size-5' />
-              </Button>
+              <Link href='/models'>
+                <Button
+                  variant='ghost'
+                  size='icon'
+                  className={`rounded-lg ${
+                    pathname === '/models' ? 'bg-muted' : ''
+                  }`}
+                  aria-label='Models'
+                >
+                  <Bot className='size-5' />
+                </Button>
+              </Link>
             </TooltipTrigger>
             <TooltipContent side='right' sideOffset={5}>
               Models
@@ -62,49 +74,21 @@ export function SidebarNavigation() {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button
-                variant='ghost'
-                size='icon'
-                className='rounded-lg'
-                aria-label='API'
-              >
-                <Code2 className='size-5' />
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent side='right' sideOffset={5}>
-              API
-            </TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                variant='ghost'
-                size='icon'
-                className='rounded-lg'
-                aria-label='Documentation'
-              >
-                <Book className='size-5' />
-              </Button>
+              <Link href='/docs/api'>
+                <Button
+                  variant='ghost'
+                  size='icon'
+                  className={`rounded-lg ${
+                    pathname === '/docs/api' ? 'bg-muted' : ''
+                  }`}
+                  aria-label='Documentation'
+                >
+                  <Book className='size-5' />
+                </Button>
+              </Link>
             </TooltipTrigger>
             <TooltipContent side='right' sideOffset={5}>
               Documentation
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                variant='ghost'
-                size='icon'
-                className='rounded-lg'
-                aria-label='Settings'
-              >
-                <Settings2 className='size-5' />
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent side='right' sideOffset={5}>
-              Settings
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
@@ -113,14 +97,18 @@ export function SidebarNavigation() {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button
-                variant='ghost'
-                size='icon'
-                className='mt-auto rounded-lg'
-                aria-label='Help'
-              >
-                <LifeBuoy className='size-5' />
-              </Button>
+              <Link href='/help'>
+                <Button
+                  variant='ghost'
+                  size='icon'
+                  className={`mt-auto rounded-lg ${
+                    pathname === '/help' ? 'bg-muted' : ''
+                  }`}
+                  aria-label='Help'
+                >
+                  <LifeBuoy className='size-5' />
+                </Button>
+              </Link>
             </TooltipTrigger>
             <TooltipContent side='right' sideOffset={5}>
               Help
@@ -128,14 +116,18 @@ export function SidebarNavigation() {
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button
-                variant='ghost'
-                size='icon'
-                className='mt-auto rounded-lg'
-                aria-label='Account'
-              >
-                <SquareUser className='size-5' />
-              </Button>
+              <Link href='/account'>
+                <Button
+                  variant='ghost'
+                  size='icon'
+                  className={`mt-auto rounded-lg ${
+                    pathname === '/account' ? 'bg-muted' : ''
+                  }`}
+                  aria-label='Account'
+                >
+                  <SquareUser className='size-5' />
+                </Button>
+              </Link>
             </TooltipTrigger>
             <TooltipContent side='right' sideOffset={5}>
               Account

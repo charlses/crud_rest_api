@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         status: 201,
-        statusText: 'Created',
+        statusText: 'OK',
         url: req.url,
         message: 'API Request Completed Successfully',
         method: 'POST',

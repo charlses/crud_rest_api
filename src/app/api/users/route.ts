@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
     const newUser = await User.create(data)
     return NextResponse.json(
       {
-        status: 200,
+        status: 201,
         statusText: 'OK',
         url: req.url,
         message: 'API Request Completed Successfully',
