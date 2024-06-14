@@ -1,3 +1,5 @@
+'use client'
+import { useRef } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import {
   TooltipProvider,
@@ -7,6 +9,7 @@ import {
 } from '@/components/ui/tooltip'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Button } from '@/components/ui/button'
+import { toast } from 'sonner'
 
 export default function CodeBox({
   children,
@@ -15,41 +18,44 @@ export default function CodeBox({
   children: React.ReactNode
   title: string
 }) {
+  const preRef = useRef<HTMLPreElement>(null)
+
+  const copyToClipboard = () => {
+    if (preRef.current) {
+      navigator.clipboard.writeText(preRef.current.innerText)
+      toast.success('Code copied to clipboard')
+    }
+  }
+
   return (
-    <Card className='w-full max-w-[800px] rounded-xl font-mono mb-6'>
+    <Card className='w-full max-w-[800px] rounded-xl font-mono mb-5'>
       <CardHeader className='pb-0'>
-        <CardTitle className='m-0'>{title}</CardTitle>
+        <CardTitle className='m-0 p-0'>{title}</CardTitle>
       </CardHeader>
-      <CardContent className='border-2 m-6 rounded-md'>
-        <div className='rounded-md p-4 overflow-auto'>
-          <div className='flex items-end justify-end m-0 p-0'>
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button size='icon' variant='ghost' className='h-6 w-6'>
-                    <CopyIcon className='h-4 w-4' />
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>Copy code</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          </div>
-          <pre className='whitespace-pre-wrap break-all '>
-            <ScrollArea className='h-[600px] flex flex-col'>
+      <CardContent className='m-2'>
+        <div className='rounded-md p-1 overflow-auto'>
+          <ScrollArea className='h-[300px] flex flex-col'>
+            <div className='flex items-end justify-end mr-4'>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      size='icon'
+                      variant='ghost'
+                      className='h-6 w-6'
+                      onClick={copyToClipboard}
+                    >
+                      <CopyIcon className='h-4 w-4' />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>Copy Code</TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </div>
+            <pre ref={preRef} className='whitespace-pre-wrap break-all'>
               {children}
-            </ScrollArea>
-            {/* {JSON.stringify(
-              {
-                name: 'John Doe',
-                email: 'john@example.com',
-                phone: '555-1234'
-              },
-              null,
-              2
-            )} */}
-          </pre>
+            </pre>
+          </ScrollArea>
         </div>
       </CardContent>
     </Card>

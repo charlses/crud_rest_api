@@ -4,6 +4,7 @@ import { ThemeProvider } from '@/components/theme/theme-provider'
 import { Header } from '@/components/header'
 import { SidebarNavigation } from '@/components/aside'
 import { ApiResponseProvider } from '@/components/context/ApiResponseContext'
+import { Toaster } from '@/components/ui/sonner'
 
 export const metadata: Metadata = {
   title: "Davit's Blog Api",
@@ -33,6 +34,7 @@ export default function RootLayout({
                 {children}
               </div>
             </div>
+            <Toaster />
           </ApiResponseProvider>
         </ThemeProvider>
       </body>

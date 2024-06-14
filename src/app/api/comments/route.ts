@@ -4,6 +4,7 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(req: NextRequest) {
   await connect()
+
   try {
     const comments = await Comment.find()
     return NextResponse.json(
@@ -31,6 +32,7 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   await connect()
+
   try {
     const data = await req.json()
     console.log(data)
@@ -46,6 +48,7 @@ export async function POST(req: NextRequest) {
     }
 
     const newComment = await Comment.create(data)
+
     return NextResponse.json(
       {
         status: 201,

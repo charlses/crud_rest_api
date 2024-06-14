@@ -1,5 +1,10 @@
+import PostsApiDoc from '@/components/documentation/posts'
 const DocumentationPage = () => {
-  return <div>DocumentationPage</div>
+  return (
+    <div>
+      <PostsApiDoc />
+    </div>
+  )
 }
 
 export default DocumentationPage
