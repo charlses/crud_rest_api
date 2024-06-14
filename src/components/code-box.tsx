@@ -29,19 +29,19 @@ export default function CodeBox({
 
   return (
     <Card className='w-full max-w-[800px] rounded-xl font-mono mb-5'>
-      <CardHeader className='pb-0'>
+      <CardHeader className='pb-4'>
         <CardTitle className='m-0 p-0'>{title}</CardTitle>
       </CardHeader>
-      <CardContent className='m-2'>
-        <div className='rounded-md p-1 overflow-auto'>
+      <CardContent className='ml-5 p-0'>
+        <div className='rounded-lg overflow-auto'>
           <ScrollArea className='h-[300px] flex flex-col'>
-            <div className='flex items-end justify-end mr-4'>
+            <div className='mb-[-40px] bg-background absolute right-3'>
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Button
                       size='icon'
-                      variant='ghost'
+                      variant='outline'
                       className='h-6 w-6'
                       onClick={copyToClipboard}
                     >
