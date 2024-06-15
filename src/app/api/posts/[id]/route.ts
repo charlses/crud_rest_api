@@ -47,10 +47,10 @@ export async function PUT(
   await connect()
   try {
     const id = params.id
-    const data = req.body // Spread the update data
+    const { title, content } = await req.json() // Spread the update data
     const updatedPost = await Post.findByIdAndUpdate(
       id,
-      { data },
+      { title: title, content: content },
       { new: true }
     )
     if (!updatedPost) {

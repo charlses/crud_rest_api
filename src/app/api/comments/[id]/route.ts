@@ -45,11 +45,15 @@ export async function PUT(
   await connect()
   try {
     const id = params.id
-    const data = await req.json()
+    const { content } = await req.json()
 
-    const updatedComment = await Comment.findByIdAndUpdate(id, data, {
-      new: true
-    })
+    const updatedComment = await Comment.findByIdAndUpdate(
+      id,
+      { content: content },
+      {
+        new: true
+      }
+    )
     if (!updatedComment) {
       return NextResponse.json(
         { message: `Comment with id:${id} could not be found` },

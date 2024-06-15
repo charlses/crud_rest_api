@@ -1,9 +1,23 @@
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+
 import PostsApiDoc from '@/components/documentation/posts'
+import CommentsApiDoc from '@/components/documentation/comments'
 const DocumentationPage = () => {
   return (
-    <div>
-      <PostsApiDoc />
-    </div>
+    <Tabs defaultValue='users'>
+      <TabsList className='grid w-full grid-cols-1 md:grid-cols-3 gap-3 mb-20 md:mb-0'>
+        <TabsTrigger value='users'>/api/users</TabsTrigger>
+        <TabsTrigger value='posts'>/api/posts</TabsTrigger>
+        <TabsTrigger value='comments'>/api/comments</TabsTrigger>
+      </TabsList>
+      <TabsContent value='users'>Users Documentation</TabsContent>
+      <TabsContent value='posts'>
+        <PostsApiDoc />
+      </TabsContent>
+      <TabsContent value='comments'>
+        <CommentsApiDoc />
+      </TabsContent>
+    </Tabs>
   )
 }
 

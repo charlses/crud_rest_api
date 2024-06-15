@@ -35,7 +35,6 @@ export async function POST(req: NextRequest) {
 
   try {
     const data = await req.json()
-    console.log(data)
 
     if (!data.content || !data.author || !data.post) {
       return NextResponse.json(
