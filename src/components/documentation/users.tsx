@@ -1,5 +1,11 @@
 import React from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription
+} from '@/components/ui/card'
 import CodeBox from '@/components/code-box'
 
 const UsersApiDoc = () => {
@@ -8,9 +14,10 @@ const UsersApiDoc = () => {
       {/* Documentation for https://davits-api.vercel.app/api/users */}
       <Card className='mb-8'>
         <CardHeader>
-          <CardTitle>
-            API Documentation: https://davits-api.vercel.app/api/users
-          </CardTitle>
+          <CardTitle>API Documentation:</CardTitle>
+          <CardDescription>
+            https://davits-api.vercel.app/api/users
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <p className='mb-4'>
@@ -21,7 +28,7 @@ const UsersApiDoc = () => {
             GET - Retrieve All users
           </h3>
           <p className='mb-4'>Retrieves all users from the database.</p>
-          <CodeBox title='https://davits-api.vercel.app/api/users - GET'>
+          <CodeBox title='- GET' url='https://davits-api.vercel.app/api/users'>
             {`
 fetch('https://davits-api.vercel.app/api/users', {
   method: 'GET',
@@ -39,7 +46,7 @@ fetch('https://davits-api.vercel.app/api/users', {
             POST - Create a New User
           </h3>
           <p className='mb-4'>Creates a new User with the provided data.</p>
-          <CodeBox title='https://davits-api.vercel.app/api/users - POST'>
+          <CodeBox title='- POST' url='https://davits-api.vercel.app/api/users'>
             {`
 fetch('https://davits-api.vercel.app/api/users', {
   method: 'POST',
@@ -47,9 +54,10 @@ fetch('https://davits-api.vercel.app/api/users', {
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
-    content: 'New User Content',
-    author: 'Author ID',
-    post: 'Post ID'
+    firstname: 'New User Name',
+    lastname: 'New User Last Name',
+    email: 'New User Email',
+    password: 'New User Password
   })
 })
   .then(response => response.json())
@@ -63,9 +71,10 @@ fetch('https://davits-api.vercel.app/api/users', {
       {/* Documentation for https://davits-api.vercel.app/api/users/:id */}
       <Card className='mb-8'>
         <CardHeader>
-          <CardTitle>
-            API Documentation: https://davits-api.vercel.app/api/users/:id
-          </CardTitle>
+          <CardTitle>API Documentation:</CardTitle>
+          <CardDescription>
+            https://davits-api.vercel.app/api/users/:id
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <p className='mb-4'>
@@ -76,7 +85,10 @@ fetch('https://davits-api.vercel.app/api/users', {
             GET - Retrieve a User by ID
           </h3>
           <p className='mb-4'>Retrieves a specific User by its ID.</p>
-          <CodeBox title='https://davits-api.vercel.app/api/users/:id - GET'>
+          <CodeBox
+            title='- GET'
+            url='https://davits-api.vercel.app/api/users/:id'
+          >
             {`
 fetch('https://davits-api.vercel.app/api/users/:id', {
   method: 'GET',
@@ -96,7 +108,10 @@ fetch('https://davits-api.vercel.app/api/users/:id', {
           <p className='mb-4'>
             Updates a specific User by its ID with the provided data.
           </p>
-          <CodeBox title='https://davits-api.vercel.app/api/users/:id - PUT'>
+          <CodeBox
+            title='- PUT'
+            url='https://davits-api.vercel.app/api/users/:id'
+          >
             {`
 fetch('https://davits-api.vercel.app/api/users/:id', {
   method: 'PUT',
@@ -117,7 +132,10 @@ fetch('https://davits-api.vercel.app/api/users/:id', {
             DELETE - Delete a User by ID
           </h3>
           <p className='mb-4'>Deletes a specific User by its ID.</p>
-          <CodeBox title='https://davits-api.vercel.app/api/users/:id - DELETE'>
+          <CodeBox
+            title='- DELETE'
+            url='https://davits-api.vercel.app/api/users/:id'
+          >
             {`
 fetch('https://davits-api.vercel.app/api/users/:id', {
   method: 'DELETE',

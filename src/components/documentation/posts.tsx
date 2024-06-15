@@ -1,5 +1,11 @@
 import React from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle
+} from '@/components/ui/card'
 import CodeBox from '@/components/code-box'
 
 const PostsApiDoc = () => {
@@ -8,9 +14,10 @@ const PostsApiDoc = () => {
       {/* Documentation for https://davits-api.vercel.app/api/posts */}
       <Card className='mb-8'>
         <CardHeader>
-          <CardTitle>
-            API Documentation: https://davits-api.vercel.app/api/posts
-          </CardTitle>
+          <CardTitle>API Documentation:</CardTitle>
+          <CardDescription>
+            https://davits-api.vercel.app/api/posts
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <p className='mb-4'>
@@ -21,7 +28,7 @@ const PostsApiDoc = () => {
             GET - Retrieve All Posts
           </h3>
           <p className='mb-4'>Retrieves all posts from the database.</p>
-          <CodeBox title='https://davits-api.vercel.app/api/posts - GET'>
+          <CodeBox title='- GET' url='https://davits-api.vercel.app/api/posts'>
             {`
 fetch('https://davits-api.vercel.app/api/posts', {
   method: 'GET',
@@ -39,7 +46,10 @@ fetch('https://davits-api.vercel.app/api/posts', {
             POST - Create a New Post
           </h3>
           <p className='mb-4'>Creates a new post with the provided data.</p>
-          <CodeBox title='https://davits-api.vercel.app/api/posts - POST'>
+          <CodeBox
+            title='- POST'
+            url='https://davits-api.vercel.app/api/posts '
+          >
             {`
 fetch('https://davits-api.vercel.app/api/posts', {
   method: 'POST',
@@ -63,9 +73,10 @@ fetch('https://davits-api.vercel.app/api/posts', {
       {/* Documentation for https://davits-api.vercel.app/api/posts/:id */}
       <Card className='mb-8'>
         <CardHeader>
-          <CardTitle>
-            API Documentation: https://davits-api.vercel.app/api/posts/:id
-          </CardTitle>
+          <CardTitle>API Documentation:</CardTitle>
+          <CardDescription>
+            https://davits-api.vercel.app/api/posts/:id
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <p className='mb-4'>
@@ -76,7 +87,10 @@ fetch('https://davits-api.vercel.app/api/posts', {
             GET - Retrieve a Post by ID
           </h3>
           <p className='mb-4'>Retrieves a specific post by its ID.</p>
-          <CodeBox title='https://davits-api.vercel.app/api/posts/:id - GET'>
+          <CodeBox
+            title='- GET'
+            url='https://davits-api.vercel.app/api/posts/:id'
+          >
             {`
 fetch('https://davits-api.vercel.app/api/posts/:id', {
   method: 'GET',
@@ -96,7 +110,10 @@ fetch('https://davits-api.vercel.app/api/posts/:id', {
           <p className='mb-4'>
             Updates a specific post by its ID with the provided data.
           </p>
-          <CodeBox title='https://davits-api.vercel.app/api/posts/:id - PUT'>
+          <CodeBox
+            title='- PUT'
+            url='https://davits-api.vercel.app/api/posts/:id'
+          >
             {`
 fetch('https://davits-api.vercel.app/api/posts/:id', {
   method: 'PUT',
@@ -118,7 +135,10 @@ fetch('https://davits-api.vercel.app/api/posts/:id', {
             DELETE - Delete a Post by ID
           </h3>
           <p className='mb-4'>Deletes a specific post by its ID.</p>
-          <CodeBox title='https://davits-api.vercel.app/api/posts/:id - DELETE'>
+          <CodeBox
+            title='- DELETE'
+            url='https://davits-api.vercel.app/api/posts/:id'
+          >
             {`
 fetch('https://davits-api.vercel.app/api/posts/:id', {
   method: 'DELETE',

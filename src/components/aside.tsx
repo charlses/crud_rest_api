@@ -53,27 +53,6 @@ export function SidebarNavigation() {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Link href='/models'>
-                <Button
-                  variant='ghost'
-                  size='icon'
-                  className={`rounded-lg ${
-                    pathname === '/models' ? 'bg-muted' : ''
-                  }`}
-                  aria-label='Models'
-                >
-                  <Bot className='size-5' />
-                </Button>
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent side='right' sideOffset={5}>
-              Models
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger asChild>
               <Link href='/docs/api'>
                 <Button
                   variant='ghost'
@@ -89,6 +68,27 @@ export function SidebarNavigation() {
             </TooltipTrigger>
             <TooltipContent side='right' sideOffset={5}>
               Documentation
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link href='/models'>
+                <Button
+                  variant='ghost'
+                  size='icon'
+                  className={`rounded-lg ${
+                    pathname === '/models' ? 'bg-muted' : ''
+                  }`}
+                  aria-label='Models'
+                >
+                  <Bot className='size-5' />
+                </Button>
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent side='right' sideOffset={5}>
+              Models
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>

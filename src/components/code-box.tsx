@@ -1,6 +1,12 @@
 'use client'
 import { useRef } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle
+} from '@/components/ui/card'
 import {
   TooltipProvider,
   Tooltip,
@@ -13,10 +19,12 @@ import { toast } from 'sonner'
 
 export default function CodeBox({
   children,
-  title
+  title,
+  url
 }: {
   children: React.ReactNode
   title: string
+  url: string
 }) {
   const preRef = useRef<HTMLPreElement>(null)
 
@@ -31,6 +39,7 @@ export default function CodeBox({
     <Card className='w-full max-w-[800px] rounded-xl font-mono mb-5'>
       <CardHeader className='pb-4'>
         <CardTitle className='m-0 p-0'>{title}</CardTitle>
+        <CardDescription>{url}</CardDescription>
       </CardHeader>
       <CardContent className='ml-5 p-0'>
         <div className='rounded-lg overflow-auto'>

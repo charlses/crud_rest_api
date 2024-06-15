@@ -1,5 +1,11 @@
 import React from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle
+} from '@/components/ui/card'
 import CodeBox from '@/components/code-box'
 
 const CommentsApiDoc = () => {
@@ -8,9 +14,10 @@ const CommentsApiDoc = () => {
       {/* Documentation for https://davits-api.vercel.app/api/comments */}
       <Card className='mb-8'>
         <CardHeader>
-          <CardTitle>
-            API Documentation: https://davits-api.vercel.app/api/comments
-          </CardTitle>
+          <CardTitle>API Documentation:</CardTitle>
+          <CardDescription>
+            https://davits-api.vercel.app/api/comments
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <p className='mb-4'>
@@ -22,7 +29,10 @@ const CommentsApiDoc = () => {
             GET - Retrieve All Comments
           </h3>
           <p className='mb-4'>Retrieves all Comments from the database.</p>
-          <CodeBox title='https://davits-api.vercel.app/api/comments - GET'>
+          <CodeBox
+            title='- GET'
+            url='https://davits-api.vercel.app/api/comments '
+          >
             {`
 fetch('https://davits-api.vercel.app/api/comments', {
   method: 'GET',
@@ -40,7 +50,10 @@ fetch('https://davits-api.vercel.app/api/comments', {
             POST - Create a New Comment
           </h3>
           <p className='mb-4'>Creates a new Comment with the provided data.</p>
-          <CodeBox title='https://davits-api.vercel.app/api/comments - POST'>
+          <CodeBox
+            title='- POST'
+            url='https://davits-api.vercel.app/api/comments'
+          >
             {`
 fetch('https://davits-api.vercel.app/api/comments', {
   method: 'POST',
@@ -64,9 +77,10 @@ fetch('https://davits-api.vercel.app/api/comments', {
       {/* Documentation for https://davits-api.vercel.app/api/comments/:id */}
       <Card className='mb-8'>
         <CardHeader>
-          <CardTitle>
-            API Documentation: https://davits-api.vercel.app/api/comments/:id
-          </CardTitle>
+          <CardTitle>API Documentation:</CardTitle>
+          <CardDescription>
+            https://davits-api.vercel.app/api/comments/:id
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <p className='mb-4'>
@@ -77,7 +91,10 @@ fetch('https://davits-api.vercel.app/api/comments', {
             GET - Retrieve a Comment by ID
           </h3>
           <p className='mb-4'>Retrieves a specific Comment by its ID.</p>
-          <CodeBox title='https://davits-api.vercel.app/api/comments/:id - GET'>
+          <CodeBox
+            title='- GET'
+            url='https://davits-api.vercel.app/api/comments/:id'
+          >
             {`
 fetch('https://davits-api.vercel.app/api/comments/:id', {
   method: 'GET',
@@ -97,7 +114,10 @@ fetch('https://davits-api.vercel.app/api/comments/:id', {
           <p className='mb-4'>
             Updates a specific Comment by its ID with the provided data.
           </p>
-          <CodeBox title='https://davits-api.vercel.app/api/comments/:id - PUT'>
+          <CodeBox
+            title='- PUT'
+            url='https://davits-api.vercel.app/api/comments/:id '
+          >
             {`
 fetch('https://davits-api.vercel.app/api/comments/:id', {
   method: 'PUT',
@@ -118,7 +138,10 @@ fetch('https://davits-api.vercel.app/api/comments/:id', {
             DELETE - Delete a Comment by ID
           </h3>
           <p className='mb-4'>Deletes a specific comment by its ID.</p>
-          <CodeBox title='https://davits-api.vercel.app/api/comments/:id - DELETE'>
+          <CodeBox
+            title='- DELETE'
+            url='https://davits-api.vercel.app/api/comments/:id'
+          >
             {`
 fetch('https://davits-api.vercel.app/api/comments/:id', {
   method: 'DELETE',
