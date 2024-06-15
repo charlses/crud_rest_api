@@ -28,6 +28,13 @@ export function SettingsForm() {
   const [selectedItem, setSelectedItem] = useState<string>('')
   const [error, setError] = useState<string>('')
 
+  // Form data for POST and PUT requests
+  const [formData, setFormData] = useState<any>({
+    content: '',
+    author: '',
+    post: ''
+  })
+
   const handleModelChange = (value: string) => {
     setModel(value)
     setSelectedItem('')
@@ -53,13 +60,36 @@ export function SettingsForm() {
     if (model) fetchItems(model)
   }, [model])
 
-  const handleItemIdChange = (value: string) => setSelectedItem(value)
+  const handleItemIdChange = (value: string) => {
+    setSelectedItem(value)
+    if (method === 'PUT') {
+      const selected = itemList.find((item) => item._id === value)
+      if (selected) {
+        setFormData({
+          content: selected.content || '',
+          author: selected.author || '',
+          post: selected.post || ''
+        })
+      }
+    }
+  }
+
+  const handleFormDataChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target
+    setFormData((prevData: any) => ({ ...prevData, [name]: value }))
+  }
+
+  const handleSelectChange = (name: string, value: string) => {
+    setFormData((prevData: any) => ({ ...prevData, [name]: value }))
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setError('')
 
-    const apiUrl = `${model}/${selectedItem}`
+    const apiUrl = method === 'POST' ? model : `${model}/${selectedItem}`
 
     try {
       let response
@@ -73,6 +103,23 @@ export function SettingsForm() {
         console.log('API response:', response)
         setSelectedItem('')
         setApiResponse(response)
+      } else if (method === 'POST' || method === 'PUT') {
+        response = await fetch(apiUrl, {
+          method,
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            content: formData.content,
+            ...(method === 'POST' && {
+              author: formData.author,
+              post: formData.post
+            })
+          })
+        })
+        const data = await response.json()
+        console.log('API response:', data)
+        setApiResponse(data)
       }
     } catch (error) {
       setError(`Error making API request: ${error}`)
@@ -224,6 +271,69 @@ export function SettingsForm() {
             </SelectContent>
           </Select>
         </div>
+        {(method === 'POST' || method === 'PUT') && (
+          <>
+            {method === 'POST' && (
+              <>
+                <div className='grid gap-3'>
+                  <Label htmlFor='author'>Author</Label>
+                  <Select
+                    name='author'
+                    onValueChange={(value) =>
+                      handleSelectChange('author', value)
+                    }
+                  >
+                    <SelectTrigger
+                      id='author-trigger'
+                      className='items-start [&_[data-description]]:hidden'
+                    >
+                      <SelectValue placeholder='Select an author' />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {itemList.map((item) => (
+                        <SelectItem key={item._id} value={item._id}>
+                          {item.firstname} {item.lastname}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className='grid gap-3'>
+                  <Label htmlFor='post'>Post</Label>
+                  <Select
+                    name='post'
+                    onValueChange={(value) => handleSelectChange('post', value)}
+                  >
+                    <SelectTrigger
+                      id='post-trigger'
+                      className='items-start [&_[data-description]]:hidden'
+                    >
+                      <SelectValue placeholder='Select a post' />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {itemList.map((item) => (
+                        <SelectItem key={item._id} value={item._id}>
+                          {item.title}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </>
+            )}
+            <div className='grid gap-3'>
+              <Label htmlFor='content'>Content</Label>
+              <textarea
+                id='content'
+                name='content'
+                value={formData.content}
+                onChange={handleFormDataChange}
+                className='w-full rounded-md border p-2'
+                rows={4}
+              />
+            </div>
+          </>
+        )}
       </fieldset>
 
       <Button type='submit' variant='outline'>

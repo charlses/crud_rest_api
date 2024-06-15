@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
     console.log(data) // Debugging line to check the received data
 
     // Check if all required fields are present
-    if (!data.author || !data.title || !data.content) {
+    if (!data.author || !data.title || !data.content || !data.imageUrl) {
       return NextResponse.json(
         {
           error: 'Validation error',
