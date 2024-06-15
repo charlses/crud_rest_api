@@ -3,6 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import PostsApiDoc from '@/components/documentation/posts'
 import CommentsApiDoc from '@/components/documentation/comments'
 import UsersApiDoc from '@/components/documentation/users'
+
 const DocumentationPage = () => {
   return (
     <Tabs defaultValue='users'>
