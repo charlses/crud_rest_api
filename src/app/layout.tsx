@@ -27,12 +27,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ApiResponseProvider>
-            <div className='grid h-screen w-full pl-[56px]'>
+            <div className='grid h-screen w-full pl-[56px] '>
               <SidebarNavigation />
-              <div className='flex flex-col'>
-                <Header />
-                {children}
-              </div>
+              <Header />
+              <div className='pt-[57px]'>{children}</div>
             </div>
             <Toaster />
           </ApiResponseProvider>
