@@ -24,7 +24,7 @@ export function SidebarNavigation() {
   const pathname = usePathname()
 
   return (
-    <aside className='inset-y fixed left-0 z-20 flex h-full flex-col border-r'>
+    <aside className='inset-y fixed left-0 z-20 flex h-full  max-h-[100vh] flex-col border-r'>
       <div className='border-b p-2'>
         <Button variant='outline' size='icon' aria-label='Home'>
           <Code2 className='size-5 fill-foreground' />
