@@ -20,13 +20,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please provide your password'],
     unique: false
-  },
-  comments: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Comment'
-    }
-  ]
+  }
 })
 
 const User = mongoose.models.users || mongoose.model('users', userSchema)
