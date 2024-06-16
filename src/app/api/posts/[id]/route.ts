@@ -89,14 +89,21 @@ export async function DELETE(
   await connect()
   try {
     const id = params.id
+    console.log('Deleting post with id:', id)
+
     const deletedPost = await Post.findByIdAndDelete(id)
+    console.log('Deleted post:', deletedPost)
+
     if (!deletedPost) {
       return NextResponse.json(
         { message: `post with id:${id} could not be found` },
         { status: 404, statusText: 'Post not found' }
       )
     }
+
     await Comment.deleteMany({ post: id })
+    console.log('Deleted comments associated with post:', id)
+
     return NextResponse.json(
       {
         status: 200,
@@ -112,6 +119,7 @@ export async function DELETE(
       }
     )
   } catch (err: any) {
+    console.error('Error deleting post:', err)
     return NextResponse.json(
       { error: err.message, message: 'Internal server error: 500' },
       { status: 500, statusText: 'Internal server error' }

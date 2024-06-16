@@ -48,6 +48,19 @@ export async function POST(req: NextRequest) {
       )
     }
 
+    const existingUser = await User.findOne({ email: data.email })
+    if (existingUser) {
+      return NextResponse.json(
+        {
+          error: 'Validation error',
+          message: 'User already exists!',
+          status: 400,
+          statusText: 'Bad Request',
+          method: 'POST'
+        },
+        { status: 400, statusText: 'Bad Request' }
+      )
+    }
     const newUser = await User.create(data)
     return NextResponse.json(
       {
