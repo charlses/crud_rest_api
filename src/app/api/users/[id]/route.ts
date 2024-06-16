@@ -57,6 +57,19 @@ export async function PUT(
         { status: 404, statusText: 'User not found' }
       )
     }
+    if (data.password && data.password.length < 6) {
+      return NextResponse.json(
+        {
+          error: 'Validation error',
+          message: 'The password must be at least 6 characters',
+          status: 400,
+          statusText: 'Bad Request',
+          method: 'POST'
+        },
+        { status: 400, statusText: 'Bad Request' }
+      )
+    }
+
     return NextResponse.json(
       {
         status: 200,

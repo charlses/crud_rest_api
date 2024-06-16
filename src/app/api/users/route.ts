@@ -61,6 +61,18 @@ export async function POST(req: NextRequest) {
         { status: 400, statusText: 'Bad Request' }
       )
     }
+    if (data.password.length < 6) {
+      return NextResponse.json(
+        {
+          error: 'Validation error',
+          message: 'The password must be at least 6 characters',
+          status: 400,
+          statusText: 'Bad Request',
+          method: 'POST'
+        },
+        { status: 400, statusText: 'Bad Request' }
+      )
+    }
     const newUser = await User.create(data)
     return NextResponse.json(
       {
