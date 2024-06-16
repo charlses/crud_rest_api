@@ -3,7 +3,7 @@ import './globals.css'
 import { ThemeProvider } from '@/components/theme/theme-provider'
 import { Header } from '@/components/header'
 import { SidebarNavigation } from '@/components/aside'
-import { ApiResponseProvider } from '@/components/context/ApiResponseContext'
+import { ApiResponseProvider } from '@/context/ApiResponseContext'
 import { Toaster } from '@/components/ui/sonner'
 
 export const metadata: Metadata = {

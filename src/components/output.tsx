@@ -1,6 +1,6 @@
 'use client'
 import { Badge } from '@/components/ui/badge'
-import { useApiResponse } from '@/components/context/ApiResponseContext'
+import { useApiResponse } from '@/context/ApiResponseContext'
 import { ScrollArea } from '@/components/ui/scroll-area'
 export const Output = () => {
   const { apiResponse } = useApiResponse()
