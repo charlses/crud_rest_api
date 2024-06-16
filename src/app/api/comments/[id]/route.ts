@@ -2,12 +2,13 @@ import { connect } from '@/server/db'
 import Comment from '@/schemas/commentSchema'
 import { NextRequest, NextResponse } from 'next/server'
 
-export async function GET(req: NextRequest) {
+export async function GET(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
   await connect()
   try {
-    const { searchParams } = new URL(req.url)
-    const id = searchParams.get('id')
-    console.log(req.body)
+    const id = params.id
     const comment = await Comment.findById(id)
     if (!comment) {
       return NextResponse.json(
