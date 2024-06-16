@@ -11,7 +11,7 @@ export const Output = () => {
         Output
       </Badge>
       <div className='flex-1 overflow-auto'>
-        <pre className='whitespace-pre-wrap break-all'>
+        <pre className='whitespace-pre-wrap break-all p-2'>
           {apiResponse
             ? JSON.stringify(apiResponse, null, 2)
             : 'No response yet'}
