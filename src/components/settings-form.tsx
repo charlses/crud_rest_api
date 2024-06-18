@@ -117,21 +117,21 @@ export function SettingsForm() {
     const apiUrl = method === 'POST' ? model : `${model}/${selectedItem}`
 
     try {
-      let response
       if (method === 'GET') {
-        response = await fetch(apiUrl)
+        const response = await fetch(apiUrl)
         const data = await response.json()
         console.log('API response:', data)
         setApiResponse(data)
       }
       if (method === 'DELETE') {
-        response = await fetch(apiUrl, { method: 'DELETE' })
-        console.log('API response:', response)
+        const response = await fetch(apiUrl, { method: 'DELETE' })
+        const data = await response.json()
+        console.log('API response:', data)
+        setApiResponse(data)
         setSelectedItem('')
-        setApiResponse(response)
       }
       if (method === 'POST' || method === 'PUT') {
-        response = await fetch(apiUrl, {
+        const response = await fetch(apiUrl, {
           method,
           headers: {
             'Content-Type': 'application/json'
