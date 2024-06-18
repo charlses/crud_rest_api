@@ -164,8 +164,10 @@ export function SettingsForm() {
       className='grid w-full items-start gap-6 overflow-auto p-4 pt-0'
       onSubmit={handleSubmit}
     >
-      <fieldset className='grid gap-6 rounded--lg border p-4'>
-        <legend className='-ml-1 px-1 text-sm font-medium'>Settings</legend>
+      <fieldset className='grid gap-6 rounded-lg border p-4'>
+        <legend className='-ml-1 px-1 text-sm font-medium'>
+          Make a request
+        </legend>
         <div className='grid gap-3'>
           <Label htmlFor='model'>Model</Label>
           <Select onValueChange={handleModelChange}>
